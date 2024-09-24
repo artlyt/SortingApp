@@ -14,7 +14,7 @@ public class GlobalSearch<T> extends AbstractComparator<T> {
     }
 
     /**
-     * Проверяет и сравнивает объекты.
+     * Проверяю и сравниваю переданные объекты
      *
      * @param list       Коллекция для проверки и сортировки
      * @param element    Элемент для поиска
@@ -59,7 +59,7 @@ public class GlobalSearch<T> extends AbstractComparator<T> {
 
     @Override
     public Map<Integer, Comparator<T>> createAllComparators() {
-        // Это метод должен быть переопределён в дочернем классе, как сделано в BusComparator и других
+        // Вопрос про переопределение
         throw new UnsupportedOperationException("Need to override createAllComparators");
     }
 }
