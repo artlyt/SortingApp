@@ -8,7 +8,9 @@ import java.util.List;
 /**
  * Сортировщик коллекций.
  */
-public class Sorter<T> {
+public class Sorter {
+    private Sorter() {
+    }
 
     /**
      * Реализует сортировку коллекции выбором.
@@ -18,8 +20,20 @@ public class Sorter<T> {
      * @return Отсортированная коллекция
      */
 
-    public List<T> sortingSelection(List<T> list, Comparator<T> comparator) {
-        List<T> listCopy = generateModifibleList(list, comparator);
+    public static <T> List<T> sortingSelection(List<T> list, Comparator<T> comparator) {
+        if (list == null || comparator == null) {
+            throw new NullPointerException("list or comparator is null");
+        }
+        if (list.isEmpty() || list.size() == 1) {
+            return list;
+        }
+        List<T> listCopy = new ArrayList<>();
+        for (T element : list) {
+            if (element == null) {
+                throw new NullPointerException("element of list is null");
+            }
+            listCopy.add(element);
+        }
         int lengthList = listCopy.size();
         for (int i = 0; i < lengthList - 1; i++) {
             int minIndex = i;
@@ -33,30 +47,6 @@ public class Sorter<T> {
                 listCopy.set(i, listCopy.get(minIndex));
                 listCopy.set(minIndex, temp);
             }
-        }
-        return listCopy;
-    }
-
-    /**
-     * Копирует значения переданной коллекции
-     *
-     * @param list       Исходная коллекция
-     * @param comparator Компаратор
-     * @return Список объектов
-     */
-    private List<T> generateModifibleList(List<T> list, Comparator<T> comparator) {
-        if (list == null || comparator == null) {
-            throw new NullPointerException("list or comparator is null");
-        }
-        if (list.isEmpty() || list.size() == 1) {
-            return list;
-        }
-        List<T> listCopy = new ArrayList<>();
-        for (T element : list) {
-            if (element == null) {
-                throw new NullPointerException("element of list is null");
-            }
-            listCopy.add(element);
         }
         return listCopy;
     }
