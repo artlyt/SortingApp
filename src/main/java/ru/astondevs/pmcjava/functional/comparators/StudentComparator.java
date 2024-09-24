@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 /**
- * Класс для создание компаратора студентов.
+ * Класс для создания компаратора студентов.
  */
 public class StudentComparator extends AbstractComparator<Student> {
     protected StudentComparator(String orderSort) {
