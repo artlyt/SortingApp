@@ -12,20 +12,19 @@ public class ChoiceObject {
 
     public List<?> fillData() {
         System.out.println("""
-        \n=== Choose type ===
+        === Choose type ===
         1. Buses
         2. Users
         3. Students
-        Choose an option: """);
+        Choose an option:""");
 
         int typeChoice = scanner.nextInt();
         switch (typeChoice) {
             case 1 -> {
                 return createBuses();
             }
-            default -> {
-                throw new IllegalArgumentException();
-            }
+            default -> throw new IllegalArgumentException();
+
         }
     }
 
