@@ -81,6 +81,4 @@ class SorterTest {
 
         assertEquals(busesSorting, Sorter.sortingSelection(buses, new BusComparator(orderSorting).createComparator()));
     }
-
-
 }
