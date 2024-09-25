@@ -1,7 +1,9 @@
 package ru.astondevs.pmcjava.console;
 
+import ru.astondevs.pmcjava.functional.GlobalSearch;
 import ru.astondevs.pmcjava.functional.Sorter;
 import ru.astondevs.pmcjava.functional.comparators.BusComparator;
+import ru.astondevs.pmcjava.mapper.BusMapper;
 import ru.astondevs.pmcjava.model.Bus;
 
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private final ChoiceObject choiceObject = new ChoiceObject();
 
 
@@ -45,15 +47,11 @@ public class MainMenu {
                     break;
                 case 3:
                     if (listObjects.get(0) instanceof Bus) {
-                        Bus bus = new Bus.Builder()
-                                .setNumber("asd")
-                                .setModel("ASD")
-                                .setMileage(123.123)
-                                .build();
+                        System.out.println("Введите номер, модель, пробег автобуса");
+                        Bus bus = BusMapper.busMapper(scanner.next(), scanner.next(), scanner.nextDouble());
+                        System.out.println("Is in collection: " +
+                                GlobalSearch.binarySearch((List<Bus>) listObjects, bus, new BusComparator("123").createComparator()));
                     }
-
-
-//                    searchData(bus);
                     break;
 //                case 4:
 //                    running = false;

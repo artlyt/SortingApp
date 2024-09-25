@@ -1,5 +1,6 @@
 package ru.astondevs.pmcjava.console;
 
+import ru.astondevs.pmcjava.mapper.BusMapper;
 import ru.astondevs.pmcjava.model.Bus;
 
 import java.util.ArrayList;
@@ -35,12 +36,7 @@ public class ChoiceObject {
             userInput = scanner.next();
             if (!userInput.equals("СТОП")) {
                 String[] strings = userInput.split("::");
-                buses.add(new Bus.Builder()
-                        .setNumber(strings[0])
-                        .setModel(strings[1])
-                        .setMileage(Double.parseDouble(strings[2]))
-                        .build());
-
+                buses.add(BusMapper.busMapper(strings[0], strings[1], Double.parseDouble(strings[2])));
             }
         }
         return buses;
