@@ -3,26 +3,34 @@ package ru.astondevs.pmcjava.validation;
 public class EmailValidator implements Validator<String> {
 
     @Override
-    public boolean validate(String email) {
-        return isNotNull(email) && isLengthValid(email) && containsAtSymbol(email) && matchesPattern(email);
+    public String validate(String email) {
+        if (isNull(email)) {
+            return "Email не может быть null";
+        }
+        if (!isLengthValid(email)) {
+            return "Email слишком короткий";
+        }
+        if (!containsAtSymbol(email)) {
+            return "Email должен содержать символ @";
+        }
+        if (!matchesPattern(email)) {
+            return "Email имеет неверный формат";
+        }
+        return null;
     }
 
-    // Метод для проверки, что email не null
-    private boolean isNotNull(String email) {
-        return email != null;
+    private boolean isNull(String value) {
+        return value == null;
     }
 
-    // Метод для проверки длины email
     private boolean isLengthValid(String email) {
         return email.length() > 5;
     }
 
-    // Метод для проверки наличия символа "@"
     private boolean containsAtSymbol(String email) {
         return email.contains("@");
     }
 
-    // Метод для проверки соответствия регулярному выражению
     private boolean matchesPattern(String email) {
         String emailRegex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
         return email.matches(emailRegex);

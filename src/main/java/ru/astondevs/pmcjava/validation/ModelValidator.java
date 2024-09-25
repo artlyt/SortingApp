@@ -1,9 +1,9 @@
 package ru.astondevs.pmcjava.validation;
 
-public class NameValidator extends StringValidator {
+public class ModelValidator extends StringValidator {
 
     @Override
     protected String getAttributeName() {
-        return "Имя";
+        return "Модель";
     }
 }

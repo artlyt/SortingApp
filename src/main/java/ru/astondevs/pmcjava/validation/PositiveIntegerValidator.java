@@ -1,19 +1,25 @@
 package ru.astondevs.pmcjava.validation;
 
-public class PositiveIntegerValidator implements Validator<Integer> {
+public abstract class PositiveIntegerValidator implements Validator<Integer> {
 
     @Override
-    public boolean validate(Integer value) {
-        return isNotNull(value) && isPositive(value);
+    public String validate(Integer value) {
+        if (isNull(value)) {
+            return getAttributeName() + " не может быть null";
+        }
+        if (!isPositive(value)) {
+            return getAttributeName() + " должно быть положительным";
+        }
+        return null;
     }
 
-    // Метод для проверки, что значение не null
-    private boolean isNotNull(Integer value) {
-        return value != null;
+    protected boolean isNull(Integer value) {
+        return value == null;
     }
 
-    // Метод для проверки, что значение больше 0
-    private boolean isPositive(Integer value) {
+    protected boolean isPositive(Integer value) {
         return value > 0;
     }
+
+    protected abstract String getAttributeName();
 }
