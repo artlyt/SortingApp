@@ -1,6 +1,7 @@
 package ru.astondevs.pmcjava.functional;
 
 
+import ru.astondevs.pmcjava.mapper.BusMapper;
 import ru.astondevs.pmcjava.model.Bus;
 import ru.astondevs.pmcjava.model.Student;
 import ru.astondevs.pmcjava.model.User;
@@ -25,11 +26,7 @@ public class ReadFiles {
     public static List<Bus> readBusFile(String path) {
         int numFields = 3;
         return readFile(path, numFields).stream()
-                .map(strings -> new Bus.Builder()
-                        .setNumber(strings[0])
-                        .setModel(strings[1])
-                        .setMileage(Double.parseDouble(strings[2]))
-                        .build()
+                .map(strings -> BusMapper.busMapper(strings[0], strings[1], Double.parseDouble(strings[2]))
                 ).toList();
     }
 
