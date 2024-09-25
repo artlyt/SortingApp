@@ -17,11 +17,11 @@ public abstract class AbstractComparator<T> {
     }
 
     /**
-     * Формирует мапу с компараторами, где ключ - порядковый номер поля, значение - компаратор для сранвения этого поля.
+     * Формирует мапу с компараторами, где ключ - порядковый номер поля, значение - компаратор для сравнения этого поля.
      *
      * @return Мапа с компараторами
      */
-    public abstract Map<Integer, Comparator<T>> createAllComparators();
+    protected abstract Map<Integer, Comparator<T>> createAllComparators();
 
     /**
      * Создает компаратор из возможных вариантов стратегий.
