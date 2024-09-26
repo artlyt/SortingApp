@@ -65,16 +65,18 @@ public class CreateCollectionCommand extends Command {
     private void checkType(int typeChoice, Create create) {
         switch (typeChoice) {
             case 1 -> {
-                out.println("Input with keyboard");
+                out.println("Введите с клавиатуры");
                 mainMenu.setListObjects(create.createInput(getScanner()));
             }
             case 2 -> {
-                out.println("Input path file");
+                out.println("Введите путь файла");
                 mainMenu.setListObjects(create.createReadFile(getScanner().next()));
             }
             case 3 -> {
-                out.println("Random generate");
-                mainMenu.setListObjects(create.createRandom());
+                out.println("Введите количество объектов");
+                int number = getScanner().nextInt();
+                out.println("Генерация случайных объектов");
+                mainMenu.setListObjects(create.createRandom(number));
             }
             default -> out.println("Неправильный ввод мы вас вернули в меню");
         }
