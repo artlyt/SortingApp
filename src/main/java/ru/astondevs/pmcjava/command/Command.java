@@ -1,6 +1,6 @@
 package ru.astondevs.pmcjava.command;
 
-import ru.astondevs.pmcjava.MainMenu;
+import ru.astondevs.pmcjava.Menu;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public abstract class Command {
     /**
      * Меню процесса
      */
-    protected final MainMenu mainMenu;
+    protected final Menu mainMenu;
 
     /**
      * Конструктор создает команду для меню.
@@ -25,7 +25,7 @@ public abstract class Command {
      * @param commandName Название команды
      * @param mainMenu        Игровой процесс
      */
-    Command(String commandName, MainMenu mainMenu) {
+    protected Command(String commandName, Menu mainMenu) {
         this.nameCommand = requireNonNull(commandName);
         this.mainMenu = requireNonNull(mainMenu);
 
@@ -67,5 +67,9 @@ public abstract class Command {
 
     public Scanner getScanner() {
         return scanner;
+    }
+
+    public Menu getMainMenu() {
+        return mainMenu;
     }
 }

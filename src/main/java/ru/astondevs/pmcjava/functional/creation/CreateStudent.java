@@ -4,6 +4,7 @@ import ru.astondevs.pmcjava.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.Double.parseDouble;
@@ -36,7 +37,7 @@ public class CreateStudent extends Create {
      * @return Список студентов
      */
     @Override
-    public  List<Student> createReadFile(String path) {
+    public List<Student> createReadFile(String path) {
         int numFields = 3;
         return readFile(path, numFields).stream()
                 .map(strings -> map(parseInt(strings[0]), parseInt(strings[1]), parseInt(strings[2])))
@@ -44,7 +45,26 @@ public class CreateStudent extends Create {
     }
 
     @Override
-    public List<Student> createRandom() {
-        return null;
+    public List<Student> createRandom(int numberOfStudents) {
+        final Random random = new Random();
+
+        List<Student> students = new ArrayList<>();
+
+        for (int i = 0; i < numberOfStudents; i++) {
+            int groupNumber = random.nextInt(900) + 100;
+            double averageGrade = random.nextDouble() * 5.0;
+            int recordBookNumber = random.nextInt(90000) + 10000;
+
+            Student student = new Student.Builder()
+                    .setGroupNumber(groupNumber)
+                    .setAverageGrade(averageGrade)
+                    .setRecordBookNumber(recordBookNumber)
+                    .build();
+
+            students.add(student);
+        }
+
+        return students;
     }
 }
+

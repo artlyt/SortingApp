@@ -13,11 +13,26 @@ public class TextMenu {
 
     public static final String STOP ="STOP";
 
-    public static final String TYPE_INPUT = """
-            ==Select input type
-            1. Keyboard
-            2. Read File
-            3. Random generation
-            """;
+
+    public static final String DESCRIPTION_SORT_BUSES = """
+                                Введите порядок сортировки, где
+                                1 - Номерной знак
+                                2 - Модель
+                                3 - Пробег
+                                """;
+
+    public static final String DESCRIPTION_SORT_STUDENTS = """
+                                Введите порядок сортировки, где
+                                1 - Номер группы
+                                2 - Средний балл
+                                3 - Номер зачетной книжки
+                                """;
+
+    public static final String DESCRIPTION_SORT_USERS = """
+                                Введите порядок сортировки, где
+                                1 - Имя
+                                2 - Пароль
+                                3 - email
+                                """;
 
 }

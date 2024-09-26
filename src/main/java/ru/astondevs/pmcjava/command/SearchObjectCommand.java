@@ -1,6 +1,6 @@
 package ru.astondevs.pmcjava.command;
 
-import ru.astondevs.pmcjava.MainMenu;
+import ru.astondevs.pmcjava.Menu;
 import ru.astondevs.pmcjava.functional.comparators.BusComparator;
 import ru.astondevs.pmcjava.functional.comparators.StudentComparator;
 import ru.astondevs.pmcjava.functional.comparators.UserComparator;
@@ -19,15 +19,15 @@ import static ru.astondevs.pmcjava.mapper.BusMapper.map;
 /**
  * Команда для поиска объекта в коллекции
  */
-public class SearchObjectCommand extends Command{
+public class SearchObjectCommand extends Command {
     /**
      * Конструктор создает команды.
      *
      * @param commandName Название команды
-     * @param mainMenu    Игровой процесс
+     * @param menu        Игровой процесс
      */
-    public SearchObjectCommand(String commandName, MainMenu mainMenu) {
-        super(commandName, mainMenu);
+    public SearchObjectCommand(String commandName, Menu menu) {
+        super(commandName, menu);
     }
 
     /**
@@ -39,7 +39,7 @@ public class SearchObjectCommand extends Command{
         if (!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof Bus) {
             out.println("Введите номер, модель, пробег автобуса");
             Bus bus = map(getScanner().next(), getScanner().next(), getScanner().nextDouble());
-            out.println( textCollection +
+            out.println(textCollection +
                     binarySearch((List<Bus>) mainMenu.getListObjects(), bus, new BusComparator("123").createComparator()));
         }
         if (!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof Student) {
@@ -53,8 +53,9 @@ public class SearchObjectCommand extends Command{
             User user = UserMapper.map(getScanner().next(), getScanner().next(), getScanner().next());
             out.println(textCollection +
                     binarySearch((List<User>) mainMenu.getListObjects(), user, new UserComparator("123").createComparator()));
+        } else {
+            out.println("type object is bad");
         }
-
     }
 
     /**
@@ -64,6 +65,6 @@ public class SearchObjectCommand extends Command{
      */
     @Override
     public boolean isDisplay() {
-        return  mainMenu.isSortingList();
+        return mainMenu.isSortingList();
     }
 }
