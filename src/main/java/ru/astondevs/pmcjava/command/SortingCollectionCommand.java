@@ -30,22 +30,42 @@ public class SortingCollectionCommand extends Command {
      */
     @Override
     public void execute() {
+        if (mainMenu.getListObjects().isEmpty()) {
+            return;
+        }
+
+        Object firstObject = mainMenu.getListObjects().getFirst();
+        if (firstObject instanceof Bus) {
+            sortBuses();
+        } else if (firstObject instanceof Student) {
+            sortStudents();
+        } else if (firstObject instanceof User) {
+            sortUsers();
+        }
+    }
+
+    private void sortBuses() {
         Scanner scanner = new Scanner(System.in);
-        if (!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof Bus) {
-            out.println(DESCRIPTION_SORT_BUSES);
-            out.println(Sorter.sortingSelection((List<Bus>) mainMenu.getListObjects(), new BusComparator(scanner.next()).createComparator()));
-            mainMenu.setSortingList(true);
-        }
-        if(!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof Student){
-            out.println(DESCRIPTION_SORT_STUDENTS);
-            out.println(Sorter.sortingSelection((List<Student>) mainMenu.getListObjects(), new StudentComparator(scanner.next()).createComparator()));
-            mainMenu.setSortingList(true);
-        }
-        if(!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof User){
-            out.println(DESCRIPTION_SORT_USERS);
-            out.println(Sorter.sortingSelection((List<User>) mainMenu.getListObjects(), new UserComparator(scanner.next()).createComparator()));
-            mainMenu.setSortingList(true);
-        }
+        out.println(DESCRIPTION_SORT_BUSES);
+        out.println(Sorter.sortingSelection((List<Bus>) mainMenu.getListObjects(),
+                new BusComparator(scanner.next()).createComparator()));
+        mainMenu.setSortingList(true);
+    }
+
+    private void sortStudents() {
+        Scanner scanner = new Scanner(System.in);
+        out.println(DESCRIPTION_SORT_STUDENTS);
+        out.println(Sorter.sortingSelection((List<Student>) mainMenu.getListObjects(),
+                new StudentComparator(scanner.next()).createComparator()));
+        mainMenu.setSortingList(true);
+    }
+
+    private void sortUsers() {
+        Scanner scanner = new Scanner(System.in);
+        out.println(DESCRIPTION_SORT_USERS);
+        out.println(Sorter.sortingSelection((List<User>) mainMenu.getListObjects(),
+                new UserComparator(scanner.next()).createComparator()));
+        mainMenu.setSortingList(true);
     }
 
     /**
