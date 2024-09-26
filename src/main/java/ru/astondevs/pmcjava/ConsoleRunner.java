@@ -4,7 +4,6 @@ import ru.astondevs.pmcjava.command.CreateCollectionCommand;
 import ru.astondevs.pmcjava.command.ExitCommand;
 import ru.astondevs.pmcjava.command.SearchObjectCommand;
 import ru.astondevs.pmcjava.command.SortingCollectionCommand;
-import ru.astondevs.pmcjava.console.MainMenu;
 
 public class ConsoleRunner {
     public static void main(String[] args) {

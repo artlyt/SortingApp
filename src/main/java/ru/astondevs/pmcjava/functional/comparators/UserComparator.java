@@ -9,7 +9,7 @@ import java.util.Map;
  * Класс для создания компараторов пользователей/
  */
 public class UserComparator extends AbstractComparator<User> {
-    protected UserComparator(String orderSort) {
+    public UserComparator(String orderSort) {
         super(orderSort);
     }
 

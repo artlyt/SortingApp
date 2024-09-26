@@ -1,9 +1,12 @@
 package ru.astondevs.pmcjava.command;
 
-import ru.astondevs.pmcjava.console.MainMenu;
+import ru.astondevs.pmcjava.MainMenu;
 
 import static java.lang.System.out;
 
+/**
+ * Команда выхода из программы
+ */
 public class ExitCommand extends Command{
     public ExitCommand(String commandName, MainMenu mainMenu) {
         super(commandName, mainMenu);

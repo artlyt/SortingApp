@@ -1,5 +1,5 @@
-[Buses]
-B123 Volvo 125
-A123 Volvo 100
-A123 Volga 37
-B123 Volvo 25
+В123АА97 Volvo 125
+А123АА97 Volvo 100
+А123АА97 Volga 37
+В123АА97 Volvo 25
+В123АА97 Nissan 25

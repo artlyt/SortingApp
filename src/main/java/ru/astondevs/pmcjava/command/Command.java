@@ -1,6 +1,6 @@
 package ru.astondevs.pmcjava.command;
 
-import ru.astondevs.pmcjava.console.MainMenu;
+import ru.astondevs.pmcjava.MainMenu;
 
 import java.util.Scanner;
 
