@@ -63,7 +63,6 @@ public class CreateCollectionCommand extends Command {
     }
 
     private void checkType(int typeChoice, Create create) {
-
         switch (typeChoice) {
             case 1 -> {
                 out.println("Input with keyboard");
@@ -79,7 +78,6 @@ public class CreateCollectionCommand extends Command {
             }
             default -> out.println("Неправильный ввод мы вас вернули в меню");
         }
-
     }
 
     /**

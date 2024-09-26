@@ -6,12 +6,14 @@ import java.util.List;
 
 public class GlobalSearch {
 
+    private GlobalSearch() {
+    }
 
-    public static <T> boolean binarySearch(List<T> list, T target, Comparator <T> comp) {
+    public static <T> boolean binarySearch(List<T> list, T target, Comparator<T> comp) {
         if (target == null || list == null || comp == null) {
             throw new NullPointerException("Target to search must not be null");
         }
-        List <T> sortinglist = Sorter.sortingSelection(list , comp);
+        List<T> sortinglist = Sorter.sortingSelection(list, comp);
         int low = 0;
         int high = sortinglist.size() - 1;
 
