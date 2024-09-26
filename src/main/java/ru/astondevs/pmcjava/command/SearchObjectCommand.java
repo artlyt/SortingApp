@@ -20,6 +20,8 @@ import static ru.astondevs.pmcjava.mapper.BusMapper.map;
  * Команда для поиска объекта в коллекции
  */
 public class SearchObjectCommand extends Command {
+
+    private static final String TEXT_COLLECTION = "Is in collection: ";
     /**
      * Конструктор создает команды.
      *
@@ -35,27 +37,42 @@ public class SearchObjectCommand extends Command {
      */
     @Override
     public void execute() {
-        String textCollection = "Is in collection: ";
-        if (!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof Bus) {
-            out.println("Введите номер, модель, пробег автобуса");
-            Bus bus = map(getScanner().next(), getScanner().next(), getScanner().nextDouble());
-            out.println(textCollection +
-                    binarySearch((List<Bus>) mainMenu.getListObjects(), bus, new BusComparator("123").createComparator()));
+        if (mainMenu.getListObjects().isEmpty()) {
+            out.println("type object is bad");
+            return;
         }
-        if (!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof Student) {
-            out.println("Введите номер группы, средний балл, номер зачетной книжки");
-            Student student = StudentMapper.map(getScanner().nextInt(), getScanner().nextDouble(), getScanner().nextInt());
-            out.println(textCollection +
-                    binarySearch((List<Student>) mainMenu.getListObjects(), student, new StudentComparator("123").createComparator()));
-        }
-        if (!mainMenu.getListObjects().isEmpty() && mainMenu.getListObjects().getFirst() instanceof User) {
-            out.println("Введите номер группы, средний балл, номер зачетной книжки");
-            User user = UserMapper.map(getScanner().next(), getScanner().next(), getScanner().next());
-            out.println(textCollection +
-                    binarySearch((List<User>) mainMenu.getListObjects(), user, new UserComparator("123").createComparator()));
+
+        Object firstObject = mainMenu.getListObjects().getFirst();
+        if (firstObject instanceof Bus) {
+            searchBus();
+        } else if (firstObject instanceof Student) {
+            searchStudent();
+        } else if (firstObject instanceof User) {
+            searchUser();
         } else {
             out.println("type object is bad");
         }
+    }
+
+    private void searchBus() {
+        out.println("Введите номер, модель, пробег автобуса");
+        Bus bus = map(getScanner().next(), getScanner().next(), getScanner().nextDouble());
+        out.println(TEXT_COLLECTION +
+                binarySearch((List<Bus>) mainMenu.getListObjects(), bus, new BusComparator("123").createComparator()));
+    }
+
+    private void searchStudent() {
+        out.println("Введите номер группы, средний балл, номер зачетной книжки");
+        Student student = StudentMapper.map(getScanner().nextInt(), getScanner().nextDouble(), getScanner().nextInt());
+        out.println(TEXT_COLLECTION +
+                binarySearch((List<Student>) mainMenu.getListObjects(), student, new StudentComparator("123").createComparator()));
+    }
+
+    private void searchUser() {
+        out.println("Введите номер группы, средний балл, номер зачетной книжки");
+        User user = UserMapper.map(getScanner().next(), getScanner().next(), getScanner().next());
+        out.println(TEXT_COLLECTION +
+                binarySearch((List<User>) mainMenu.getListObjects(), user, new UserComparator("123").createComparator()));
     }
 
     /**
