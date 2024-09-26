@@ -1,6 +1,6 @@
 package ru.astondevs.pmcjava.command;
 
-import ru.astondevs.pmcjava.MainMenu;
+import ru.astondevs.pmcjava.Menu;
 
 import static java.lang.System.out;
 
@@ -8,8 +8,8 @@ import static java.lang.System.out;
  * Команда выхода из программы
  */
 public class ExitCommand extends Command{
-    public ExitCommand(String commandName, MainMenu mainMenu) {
-        super(commandName, mainMenu);
+    public ExitCommand(String commandName, Menu menu) {
+        super(commandName, menu);
     }
 
     /**

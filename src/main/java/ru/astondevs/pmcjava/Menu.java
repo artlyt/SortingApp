@@ -11,18 +11,30 @@ import java.util.Scanner;
 import static java.lang.System.out;
 import static java.util.Objects.requireNonNull;
 
-public class MainMenu {
+/**
+ * Меню.
+ */
+public class Menu {
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Проверяет необходимость вывода меню.
+     */
     private boolean running = true;
 
+    /**
+     * Список объектов для работы.
+     */
     private List<?> listObjects = new ArrayList<>();
 
+    /**
+     * Указывает отсортирован ли массив.
+     */
     private boolean isSortingList = false;
 
     private final Map<String, Command> menuMap = new LinkedHashMap<>();
 
-    public MainMenu addCommand(Command command) {
+    public Menu addCommand(Command command) {
         requireNonNull(command);
         menuMap.putIfAbsent(command.getNameCommand(), command);
         return this;
@@ -41,10 +53,6 @@ public class MainMenu {
         }
     }
 
-    public List<?> getListObjects() {
-        return listObjects;
-    }
-
     public boolean isSortingList() {
         return isSortingList;
     }
@@ -55,6 +63,18 @@ public class MainMenu {
 
     public void setListObjects(List<?> listObjects) {
         this.listObjects = listObjects;
+    }
+
+    public List<?> getListObjects() {
+        return listObjects;
+    }
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    public Map<String, Command> getMenuMap() {
+        return menuMap;
     }
 
     public void setRunning(boolean running) {
