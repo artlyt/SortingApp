@@ -16,6 +16,7 @@ public class RandomCommand extends TypeCreateCommand {
     @Override
     public void execute() {
         super.execute();
-        mainMenu.setListObjects(getCreate().createRandom());
+        System.out.println("Введите количество генерируемых объектов");
+        mainMenu.setListObjects(getCreate().createRandom(getScanner().nextInt()));
     }
 }
